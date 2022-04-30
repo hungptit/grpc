@@ -245,10 +245,6 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
 if(MSVC)
   include(cmake/msvc_static_runtime.cmake)
   add_definitions(-D_WIN32_WINNT=0x600 -D_SCL_SECURE_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS)
-
-  # Modify the default debug level
-  add_compile_definitions($<$<CONFIG:Debug>:_ITERATOR_DEBUG_LEVEL=1>)
-
   # Set /MP option
   if (gRPC_BUILD_MSVC_MP_COUNT GREATER 0)
     set(_gRPC_C_CXX_FLAGS "${_gRPC_C_CXX_FLAGS} /MP${gRPC_BUILD_MSVC_MP_COUNT}")
